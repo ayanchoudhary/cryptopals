@@ -1,5 +1,12 @@
 import binascii
 
+def detect_aes(string, block_size):
+    cipher = {'string':'', 'repetitions':0}
+    string_blocks = [string[i:i+block_size] for i in range(0, len(string), block_size)]
+    repetitions = len(string_blocks) - len(set(string_blocks))
+    cipher = {'string':string, 'repetitions':repetitions}
+    return cipher
+
 if __name__ == "__main__":
     hex_strings = open('set_1_8.txt').read().splitlines()
     block_size = 16
