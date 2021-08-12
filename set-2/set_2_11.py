@@ -21,12 +21,12 @@ def encryption_oracle(string):
     return {'mode': mode, 'cipher': aes_string.decode('utf-8', errors='ignore')}
 
 
-# def detect_aes(string, block_size):
-#     cipher = {'string':'', 'repetitions':0}
-#     string_blocks = [string[i:i+block_size] for i in range(0, len(string), block_size)]
-#     repetitions = len(string_blocks) - len(set(string_blocks))
-#     cipher = {'string':string, 'repetitions':repetitions}
-#     return cipher
+def detect_aes(string, block_size):
+    cipher = {'string':'', 'repetitions':0}
+    string_blocks = [string[i:i+block_size] for i in range(0, len(string), block_size)]
+    repetitions = len(string_blocks) - len(set(string_blocks))
+    cipher = {'string':string, 'repetitions':repetitions}
+    return cipher
 
 def detection_oracle(string):
     for size in range(1,len(string)):
